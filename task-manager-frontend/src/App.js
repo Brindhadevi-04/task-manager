@@ -17,18 +17,21 @@ function App() {
 
     // Fetch tasks
     const fetchTasks = async () => {
-        try {
-            const response = await axios.get(API);
-            setTasks(response.data);
-            setError("");
-        } catch (err) {
-            setError("Could not fetch tasks. Check backend server.");
-        }
-    };
+    try {
+        const response = await axios.get(API);
 
-    useEffect(() => {
-        fetchTasks();
-    }, []);
+        const taskData = Array.isArray(response.data)
+            ? response.data
+            : [];
+
+        setTasks(taskData);
+        setError("");
+    } catch (err) {
+        console.log("Fetch error:", err);
+        setTasks([]);
+        setError("Could not fetch tasks. Check backend server.");
+    }
+};
 
     // Add task
     const createTask = async () => {
