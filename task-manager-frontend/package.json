@@ -1,4 +1,4 @@
-﻿{
+{
   "name": "task-manager-frontend",
   "version": "0.1.0",
   "private": true,
@@ -21,3 +21,4 @@
     "eject": "react-scripts eject"
   }
 }
+
